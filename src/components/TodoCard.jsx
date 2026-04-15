@@ -8,6 +8,7 @@ function TodoCard() {
     title: 'Complete project documentation',
     description: 'Write comprehensive README and technical documentation for the todo app project',
     priority: 'High',
+     
     dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
     tags: ['Work', 'Documentation', 'Urgent']
   }), [])
