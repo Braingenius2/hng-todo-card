@@ -1,19 +1,45 @@
-# HNG Todo Card - Stage 0 Task
+# HNG Todo Card - Stage 1A Task
 
-A clean, high-fidelity Task Card component built with React and Tailwind CSS for the HNG Internship Frontend Stage 0.
+A clean, high-fidelity Task Card component built with React and Tailwind CSS for the HNG Internship Frontend Stage 1A.
 
 ## Live URL
 
-https://braingenius2.github.io/hng-todo-card/
+(Will be available after GitHub Pages deployment)
 
-## Features
+## What Changed from Stage 0
 
-- **Testable Components** - All elements have `data-testid` attributes for automated testing
-- **Semantic HTML** - Uses proper HTML5 elements (`<article>`, `<h3>`, `<time>`, `<input>`, `<button>`, `<ul>`, `<li>`)
-- **Dynamic Time Remaining** - Updates every 30 seconds to show accurate time until due
-- **Interactive Checkbox** - Custom styled checkbox with animated checkmark
-- **Responsive Design** - Centered card that works on all screen sizes
-- **Modern UI** - Polished startup aesthetic with hover effects and smooth transitions
+### New Features Added
+
+1. **Edit Mode** - Click Edit to enter edit mode with form inputs:
+   - Title input
+   - Description textarea
+   - Priority dropdown
+   - Due date picker
+   - Save and Cancel buttons
+
+2. **Status Control** - Changed from static display to interactive segmented control:
+   - Pending
+   - In Progress
+   - Done
+
+3. **Priority Indicator Enhancement**:
+   - Left border accent changes based on priority level
+   - Colored dot indicator
+
+4. **Expand/Collapse Behavior**:
+   - Long descriptions (>100 chars) collapse by default
+   - "Show more"/"Show less" toggle button
+   - Keyboard accessible
+
+5. **Time Management Enhancements**:
+   - More granular time display (days, hours, minutes)
+   - Explicit "Overdue" indicator with warning badge
+   - Timer stops when status is "Done"
+
+6. **Status Sync**:
+   - Checkbox toggling changes status to "Done"
+   - Setting status to "Done" checks the checkbox
+   - Unchecking returns status to "Pending"
 
 ## Tech Stack
 
@@ -53,6 +79,58 @@ npm run build
 npm run deploy
 ```
 
+## Test IDs
+
+All Stage 0 test IDs (Must exist):
+
+| Test ID | Element |
+|--------|---------|
+| `test-todo-card` | Card container |
+| `test-todo-title` | Task title |
+| `test-todo-description` | Task description |
+| `test-todo-priority` | Priority badge |
+| `test-todo-due-date` | Due date display |
+| `test-todo-time-remaining` | Time remaining display |
+| `test-todo-status` | Status indicator |
+| `test-todo-complete-toggle` | Checkbox |
+| `test-todo-tags` | Categories/tags list |
+| `test-todo-tag-{tag-name}` | Individual tag (dynamic) |
+| `test-todo-edit-button` | Edit button |
+| `test-todo-delete-button` | Delete button |
+
+New Stage 1A Test IDs:
+
+| Test ID | Element |
+|--------|---------|
+| `test-todo-edit-form` | Edit form container |
+| `test-todo-edit-title-input` | Title input in edit mode |
+| `test-todo-edit-description-input` | Description textarea |
+| `test-todo-edit-priority-select` | Priority dropdown |
+| `test-todo-edit-due-date-input` | Due date picker |
+| `test-todo-save-button` | Save button |
+| `test-todo-cancel-button` | Cancel button |
+| `test-todo-status-control` | Status segmented control |
+| `test-todo-priority-indicator` | Priority dot indicator |
+| `test-todo-expand-toggle` | Expand/collapse button |
+| `test-todo-collapsible-section` | Collapsible container |
+| `test-todo-overdue-indicator` | Overdue warning badge |
+
+## Design Decisions
+
+1. **Editable State** - Used local component state instead of props for simplicity
+2. **Segmented Status Control** - Used button group instead of dropdown for faster access
+3. **Left Border Priority** - Visual indicator matches priority color
+4. **Expand/Collapse** - Uses button toggle, keyboard accessible
+5. **Time Granularity** - Shows appropriate unit (days/hours/minutes)
+6. **Focus Management** - Returns focus to Edit button after save/cancel
+
+## Known Limitations
+
+- No data persistence (resets on refresh)
+- No form validation
+- No delete confirmation
+- Focus trap not implemented in edit mode
+
 ## Project Structure
 
 ```
@@ -67,36 +145,6 @@ hng-todo-card/
 ├── vite.config.js
 └── package.json
 ```
-
-## Test IDs
-
-The component includes all required test IDs:
-
-- `test-todo-card` - Card container
-- `test-todo-title` - Task title
-- `test-todo-description` - Task description
-- `test-todo-priority` - Priority badge
-- `test-todo-due-date` - Due date display
-- `test-todo-time-remaining` - Time remaining display
-- `test-todo-status` - Status indicator
-- `test-todo-complete-toggle` - Checkbox
-- `test-todo-tags` - Categories/tags list
-- `test-todo-tag-{tag-name}` - Individual tag (dynamic)
-- `test-todo-edit-button` - Edit button
-- `test-todo-delete-button` - Delete button
-
-## Design Decisions
-
-1. **Custom Checkbox** - Used `<label>` with CSS peer styling for a better UX instead of default browser checkbox
-2. **useMemo for Todo Data** - Wrapped todo object in useMemo to avoid React hooks warnings about impure functions
-3. **Separated Helper Functions** - Extracted priority dot class into separate function to avoid nested ternary
-4. **Aria Labels** - Added for accessibility on icon-only buttons
-
-## Trade-offs
-
-- Used static demo data instead of props for simplicity in this stage
-- Timer updates every 30 seconds as per requirements (could be 60 for less frequent updates)
-- Single card only (no list view) to match task requirements
 
 ## License
 
